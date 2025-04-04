@@ -1,46 +1,14 @@
 import React, { useState } from "react";
-import { pdfjs } from "react-pdf";
 
 const API_KEY = "AIzaSyA0C3HemTdK3Gu36D8KpZxdigIiWAbh8iQ"; // Replace with your actual API key
 
-async function fetchResponse(prompt, pdfContent = "") {
-  if (!API_KEY) {
-    throw new Error("API Key is missing. Please configure your API key.");
-  }
-
-  try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent?key=${API_KEY}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: pdfContent + "\n\n" + prompt }] }],
-        }),
-      }
-    );
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
-    }
-
-    const data = await response.json();
-    return data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "No response";
-  } catch (error) {
-    console.error("Error fetching or processing response:", error);
-    throw error;
-  }
-}
-
-function Pdfpage() {
+function App() {
   const [message, setMessage] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [pdfContent, setPdfContent] = useState("");
+  const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,8 +21,26 @@ function Pdfpage() {
     setResponse("");
 
     try {
-      const reply = await fetchResponse(message, pdfContent);
-      setResponse(reply);
+      // Create form data to send both the file and the prompt
+      const formData = new FormData();
+      formData.append("prompt", message);
+      if (file) {
+        formData.append("pdf_file", file);
+      }
+
+      // Send to our backend endpoint
+      const backendResponse = await fetch("/api/process-pdf", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!backendResponse.ok) {
+        const errorText = await backendResponse.text();
+        throw new Error(`Server error! Status: ${backendResponse.status}, Message: ${errorText}`);
+      }
+
+      const data = await backendResponse.json();
+      setResponse(data.response);
     } catch (err) {
       setError(err.message || "An unexpected error occurred.");
     } finally {
@@ -62,30 +48,13 @@ function Pdfpage() {
     }
   };
 
-  const handleFileUpload = async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append("file", file);
-  
-      try {
-        const response = await fetch("http://127.0.0.1:5000/upload", {
-          method: "POST",
-          body: formData,
-        });
-  
-        const data = await response.json();
-        if (data.text) {
-          setPdfContent(data.text);
-        } else {
-          setError("Failed to extract text from PDF.");
-        }
-      } catch (err) {
-        setError("Error uploading file: " + err.message);
-      }
+  const handleFileUpload = (event) => {
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      setFileName(selectedFile.name);
     }
   };
-  
 
   return (
     <div style={{ backgroundColor: "#1a202c", color: "white", padding: "2rem", minHeight: "100vh" }}>
@@ -93,57 +62,75 @@ function Pdfpage() {
         Gemini AI Chat with PDF Support
       </h1>
 
-      <input type="file" accept=".pdf" onChange={handleFileUpload} style={{ display: "block", margin: "1rem auto" }} />
+      <div style={{ maxWidth: "600px", margin: "0 auto", padding: "1rem" }}>
+        <div style={{ marginBottom: "1rem" }}>
+          <label htmlFor="file-upload" style={{ display: "block", marginBottom: "0.5rem" }}>
+            Upload PDF:
+          </label>
+          <input
+            id="file-upload"
+            type="file"
+            accept=".pdf"
+            onChange={handleFileUpload}
+            style={{ display: "block", width: "100%" }}
+          />
+          {fileName && (
+            <div style={{ marginTop: "0.5rem", color: "#a0aec0" }}>
+              Selected file: {fileName}
+            </div>
+          )}
+        </div>
 
-      <form onSubmit={handleSubmit} style={{ maxWidth: "600px", margin: "0 auto", padding: "1rem" }}>
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Ask something..."
-          style={{
-            width: "100%",
-            minHeight: "100px",
-            padding: "1rem",
-            backgroundColor: "#2d3748",
-            borderColor: "#4a5568",
-            color: "white",
-            borderRadius: "8px",
-            resize: "vertical",
-            marginBottom: "1rem",
-          }}
-          disabled={loading}
-        />
-        {error && (
-          <div
+        <form onSubmit={handleSubmit}>
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Ask something about the PDF..."
             style={{
-              backgroundColor: "#e53e3e",
-              color: "white",
+              width: "100%",
+              minHeight: "100px",
               padding: "1rem",
+              backgroundColor: "#2d3748",
+              borderColor: "#4a5568",
+              color: "white",
               borderRadius: "8px",
+              resize: "vertical",
               marginBottom: "1rem",
             }}
+            disabled={loading}
+          />
+          {error && (
+            <div
+              style={{
+                backgroundColor: "#e53e3e",
+                color: "white",
+                padding: "1rem",
+                borderRadius: "8px",
+                marginBottom: "1rem",
+              }}
+            >
+              <strong>Error: </strong>
+              {error}
+            </div>
+          )}
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              padding: "1rem",
+              backgroundColor: "#9f7aea",
+              color: "white",
+              border: "none",
+              borderRadius: "8px",
+              cursor: loading ? "not-allowed" : "pointer",
+              opacity: loading ? 0.6 : 1,
+            }}
+            disabled={loading}
           >
-            <strong>Error: </strong>
-            {error}
-          </div>
-        )}
-        <button
-          type="submit"
-          style={{
-            width: "100%",
-            padding: "1rem",
-            backgroundColor: "#9f7aea",
-            color: "white",
-            border: "none",
-            borderRadius: "8px",
-            cursor: loading ? "not-allowed" : "pointer",
-            opacity: loading ? 0.6 : 1,
-          }}
-          disabled={loading}
-        >
-          {loading ? "Loading..." : "Send"}
-        </button>
-      </form>
+            {loading ? "Processing..." : "Send"}
+          </button>
+        </form>
+      </div>
 
       {response && (
         <div
@@ -152,6 +139,8 @@ function Pdfpage() {
             padding: "1rem",
             borderRadius: "8px",
             marginTop: "2rem",
+            maxWidth: "600px",
+            margin: "2rem auto 0",
           }}
         >
           <h2 style={{ fontSize: "1.2rem", fontWeight: "bold" }}>Response:</h2>
@@ -162,4 +151,4 @@ function Pdfpage() {
   );
 }
 
-export default Pdfpage;
+export default App;

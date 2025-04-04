@@ -41,11 +41,11 @@ const Carrierguide = () => {
 
   // Mock locations
   const locations = [
-    { id: 'us-west', name: 'US West Coast' },
-    { id: 'us-east', name: 'US East Coast' },
-    { id: 'us-central', name: 'US Central' },
-    { id: 'europe', name: 'Europe' },
-    { id: 'asia', name: 'Asia' }
+    { id: 'us-west', name: 'Chennai' },
+    { id: 'us-east', name: 'Mumbai' },
+    { id: 'us-central', name: 'Delhi' },
+    { id: 'europe', name: 'Kochin' },
+    { id: 'asia', name: 'Bangalore' }
   ];
 
   // Mock career paths data
@@ -61,7 +61,7 @@ const Carrierguide = () => {
       skills: ['Python', 'R', 'SQL', 'Machine Learning', 'Statistics', 'Data Visualization'],
       match: 85,
       demand: 'high',
-      image: 'https://public.readdy.ai/ai/img_res/9a4b8c7d6e5f3a2b1c0d9e8f7a6b5c4d.jpg'
+      image: 'https://cdn.pixabay.com/photo/2019/12/11/04/14/web-4687386_1280.jpg'
     },
     {
       id: 2,
@@ -74,7 +74,7 @@ const Carrierguide = () => {
       skills: ['User Research', 'Wireframing', 'Prototyping', 'Visual Design', 'Figma', 'Adobe XD'],
       match: 72,
       demand: 'medium',
-      image: 'https://public.readdy.ai/ai/img_res/1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f.jpg'
+      image: 'https://img.freepik.com/free-vector/gradient-ui-ux-background_23-2149052117.jpg?ga=GA1.1.1175851510.1743659851&semt=ais_hybrid.jpg'
     },
     {
       id: 3,
@@ -87,7 +87,7 @@ const Carrierguide = () => {
       skills: ['CAD Software', 'Medical Device Design', 'Clinical Evaluation', 'Problem Solving'],
       match: 65,
       demand: 'high',
-      image: 'https://public.readdy.ai/ai/img_res/5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b.jpg'
+      image: 'https://img.freepik.com/free-vector/flat-biotechnology-illustration_23-2148885356.jpg?ga=GA1.1.1175851510.1743659851&semt=ais_hybrid.jpg'
     },
     {
       id: 4,
@@ -100,7 +100,7 @@ const Carrierguide = () => {
       skills: ['Financial Modeling', 'Excel', 'Data Analysis', 'Forecasting', 'Accounting'],
       match: 78,
       demand: 'medium',
-      image: 'https://public.readdy.ai/ai/img_res/9c8b7a6d5e4f3c2b1a0d9e8f7a6b5c4d.jpg'
+      image: 'https://img.freepik.com/free-photo/businessman-analyzing-stock-market-data_23-2151966723.jpg'
     },
     {
       id: 5,
@@ -113,20 +113,20 @@ const Carrierguide = () => {
       skills: ['CAD Software', 'Thermal Analysis', 'Product Design', 'Problem Solving'],
       match: 70,
       demand: 'medium',
-      image: 'https://public.readdy.ai/ai/img_res/1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d.jpg'
+      image: 'https://img.freepik.com/free-photo/engineer-specialist-asian-female-technician-maintenance-inspect-relay-robot-arm-system-with-laptop-control-quality-operate-process-work-heavy-industry-40-manufacturing-smart-factory_609648-95.jpg'
     },
     {
       id: 6,
-      title: 'Curriculum Developer',
+      title: 'Web Developer',
       industry: 'education',
-      description: 'Design educational content and learning experiences',
+      description: 'Design and craft websites',
       salary: '$65,000 - $95,000',
       growth: 'Average (10% over 10 years)',
       education: 'Bachelor\'s or Master\'s in Education or related field',
-      skills: ['Instructional Design', 'Content Creation', 'Educational Technology', 'Assessment Design'],
+      skills: ['React', 'Ui/Ux', 'Postgress', 'Docker'],
       match: 82,
       demand: 'medium',
-      image: 'https://public.readdy.ai/ai/img_res/7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d.jpg'
+      image: 'https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010130.jpg'
     }
   ];
 
@@ -613,7 +613,7 @@ const Carrierguide = () => {
               </div>
             ))}
           </div>
-        </div>
+     </div>
 
         {/* Career Path Visualization */}
         <div className="career-path-visualization">
@@ -634,8 +634,10 @@ const Carrierguide = () => {
         </div>
 
         {/* Skills Analysis and Recommendations */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+      
+        
           {/* Skills Analysis */}
+        <div className="skills-row">
           <div className="skills-analysis">
             <div className="p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">Skills Analysis</h2>
@@ -654,9 +656,7 @@ const Carrierguide = () => {
               </div>
             </div>
           </div>
-
-          {/* Recommended Learning Courses */}
-          <div className="recommended-learning-section">
+          <div className="recommended-learning-section w-1/2">
             <div className="p-6">
               <h2 className="learning-section-title">Recommended Learning</h2>
               <p className="learning-section-description">Courses and certifications to help you reach your career goals</p>
@@ -698,7 +698,13 @@ const Carrierguide = () => {
           </div>
         </div>
 
+          {/* Recommended Learning Courses */}
+         
+        
+      
+
         {/* Career Assessment CTA */}
+      <div className="footer-top">
         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl shadow-lg mb-8 overflow-hidden">
           <div className="md:flex">
             <div className="px-8 py-10 md:w-2/3">
@@ -717,6 +723,7 @@ const Carrierguide = () => {
             </div>
           </div>
         </div>
+      </div>
       </main>
 
       {/* Footer */}

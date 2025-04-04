@@ -144,9 +144,6 @@
   margin-bottom: 1rem; /* 16px */
 }
 
-.chart-container {
-  /* Add styles for your chart library container if needed */
-}
 
 /* Job Market Trends Section Styles */
 .job-market-trends-section {
@@ -219,7 +216,7 @@
 /* Skills Analysis Styles */
 .skills-analysis {
   display: grid;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
 }
 
@@ -629,9 +626,6 @@
   color: #1a1f71; /* Example Visa color */
 }
 
-.fa-cc-mastercard {
-  /* Color is already gray-400 */
-}
 
 .fa-cc-paypal {
   color: #00457c; /* Example PayPal color */
@@ -1354,3 +1348,17 @@ main {
   border-color: #3b82f6;
 }
 
+.rowskill {
+  display: flex;
+  flex-direction: row;
+}
+
+.skills-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.footer-top {
+  margin-top: 2rem;
+}
