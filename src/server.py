@@ -1,11 +1,12 @@
-# server.py
 from flask import Flask, request, jsonify
 import PyPDF2
 import requests
 import os
 from werkzeug.utils import secure_filename
+from flask_cors import CORS  # Import CORS
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes, or configure as needed
 
 # Configure upload folder
 UPLOAD_FOLDER = 'uploads'
@@ -14,6 +15,10 @@ if not os.path.exists(UPLOAD_FOLDER):
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 API_KEY = os.environ.get('GEMINI_API_KEY', 'YOUR_API_KEY')  # Set as environment variable
+
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({"response": "Server is running.  Send a POST request to /api/process-pdf with a PDF file and prompt."}), 200
 
 @app.route('/api/process-pdf', methods=['POST'])
 def process_pdf():
@@ -91,3 +96,4 @@ def call_gemini_api(prompt, pdf_content=""):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
