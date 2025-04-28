@@ -3,6 +3,7 @@ import "./Carrierguide.css";
 
 import React, { useState, useEffect } from 'react'; 
 import * as echarts from 'echarts';
+
 const Carrierguide = () => {
   const [activeTab, setActiveTab] = useState('career');
   const [selectedIndustry, setSelectedIndustry] = useState('all');

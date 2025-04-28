@@ -2,7 +2,6 @@
   "name": "schoolweb",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,15 +9,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google-cloud/vertexai": "^1.9.3",
+    "@google/generative-ai": "^0.24.0",
     "@shadcn/ui": "^0.0.4",
     "axios": "^1.8.4",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
     "echarts": "^5.6.0",
+    "express": "^5.1.0",
     "lucide-react": "^0.485.0",
+    "multer": "^1.4.5-lts.2",
+    "pdf-extract": "^1.0.11",
+    "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^5.1.91",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-pdf": "^9.2.1",
-    "react-router-dom": "^7.4.1"
+    "react-router-dom": "^7.4.1",
+    "require": "^2.4.20"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
@@ -29,6 +37,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "nodemon": "^3.1.9",
     "vite": "^6.2.4"
   }
 }

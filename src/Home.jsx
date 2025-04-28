@@ -11,6 +11,12 @@ function Home() {
       <div className="carrierpage">
         <Link to="/Carrierguide">Go to Career Guidance</Link>
       </div>
+      <div className="pdflibrarypage">
+        <Link to="/Pdflibrary">Go to PDF Library</Link>
+      </div>
+      <div className="continuelearningpage">
+        <Link to="/ContinueLearning">Go to Profile</Link>
+      </div>
     </div>
   );
 }

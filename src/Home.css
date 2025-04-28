@@ -1,22 +1,53 @@
 .home {
-    text-align: center;
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .pdfpage, .carrierpage {
-    margin: 10px auto;
-    padding: 10px;
-    width: 200px;
-    background-color: #3498db;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-  }
-  
-  .pdfpage a, .carrierpage a {
-    text-decoration: none;
-    color: white;
-    display: block;
-  }
-  
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.pdfpage, .carrierpage {
+  margin: 10px auto;
+  padding: 10px;
+  width: 200px;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.pdfpage a, .carrierpage a {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.pdflibrarypage{
+  margin: 10px auto;
+  padding: 10px;
+  width: 200px;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.pdflibrarypage a{
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.continuelearningpage{
+  margin: 10px auto;
+  padding: 10px;
+  width: 200px;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.continuelearningpage a{
+  text-decoration: none;
+  color: white;
+  display: block;
+}
