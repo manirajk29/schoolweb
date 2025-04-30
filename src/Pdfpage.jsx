@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './PdfPage.css'; 
+import './PdfPage.css';
 
-const API_KEY = 'AIzaSyA0C3HemTdK3Gu36D8KpZxdigIiWAbh8iQ'; 
+const API_KEY = 'AIzaSyA0C3HemTdK3Gu36D8KpZxdigIiWAbh8iQ';
 
 const Pdfpage = () => {
   const [pdfText, setPdfText] = useState('');
   const [message, setMessage] = useState('');
-  const [chats, setChats] = useState([]); // to store multiple messages
+  const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef(null);
   const chatBoxRef = useRef(null);
@@ -80,7 +80,7 @@ const Pdfpage = () => {
 
   return (
     <div className="app-container-pdf">
-      <h1 className="header">NEX ChatBot</h1>
+      <h1 className="header-pdfpage">NEX ChatBot</h1>
 
       <div className="upload-form">
         <input
@@ -97,9 +97,7 @@ const Pdfpage = () => {
             {chat.content}
           </div>
         ))}
-        {loading && (
-          <div className="message bot">Typing...</div>
-        )}
+        {loading && <div className="message bot">Typing...</div>}
       </div>
 
       <div className="input-area">

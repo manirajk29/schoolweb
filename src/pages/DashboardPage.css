@@ -1,0 +1,97 @@
+/* Wrapper around navbar and content */
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Top navbar styles */
+.top-navbar {
+  background-color: #f8f9fa;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link-a {
+  text-decoration: none;
+  color: #495057;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link-a:hover {
+  background-color: #e9ecef;
+  color: #212529;
+}
+
+.nav-link-a.active {
+  background-color: #007bff;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .top-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    margin-top: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .nav-link-a {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* Main dashboard content */
+.dashboard-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f8fafc;
+}
+
+.dashboard-main {
+  padding: 20px;
+}
+
+.welcome-box {
+  background-color: #e2e8f0;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-heading {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+.welcome-subtext {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #475569;
+}

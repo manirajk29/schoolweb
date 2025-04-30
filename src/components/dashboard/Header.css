@@ -1,0 +1,67 @@
+.career-section {
+    margin-bottom: 32px;
+    padding: 0 16px;
+  }
+  
+  .career-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #222;
+  }
+  
+  .career-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+  }
+  
+  @media (min-width: 640px) {
+    .career-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .career-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .icon-white {
+    color: white;
+  }
+  
+  /* Icon background colors (used via 'color' prop) */
+  .bg-blue {
+    background-color: #3B82F6;
+  }
+  
+  .bg-purple {
+    background-color: #8B5CF6;
+  }
+  
+  .bg-orange {
+    background-color: #F97316;
+  }
+  
+  .bg-gray {
+    background-color: #6B7280;
+  }
+  
+  .bg-green {
+    background-color: #10B981;
+  }
+  
+  .bg-red {
+    background-color: #EF4444;
+  }
+  
+  .bg-yellow {
+    background-color: #F59E0B;
+  }
+  
+  .bg-darkblue {
+    background-color: #2563EB;
+  }
+  

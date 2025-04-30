@@ -1,6 +1,9 @@
 // Carrierguide.jsx
 import "./Carrierguide.css"; 
-
+import { NavLink } from "react-router-dom";
+import Header from "./components/dashboard/Header";
+import CareerExploration from "./components/dashboard/CareerExploration";
+import QuizContainer from "./components/dashboard/QuizContainer";
 import React, { useState, useEffect } from 'react'; 
 import * as echarts from 'echarts';
 
@@ -392,9 +395,9 @@ const Carrierguide = () => {
               <span className="logo-text">EduLearn</span>
             </div>
             <nav className="header-nav">
-              <a href="https://readdy.ai/home/72c50a9b-9aec-4bd1-bece-d59e6bd116b8/3a8d3c30-3fb3-46a3-a7a0-cc4b466d018a" data-readdy="true" className="nav-link">
-                Dashboard
-              </a>
+            <div className="nav-links">
+            <NavLink to="/dashboard" className="nav-link-a" activeclassname="active">Dashboard</NavLink>
+            </div>
               <a href="#" className="nav-link active-link">
                 Career Guidance
               </a>
@@ -448,7 +451,7 @@ const Carrierguide = () => {
                 Compare Careers ({selectedCareers.length}/3)
               </button>
               <a
-                href="https://readdy.ai/home/72c50a9b-9aec-4bd1-bece-d59e6bd116b8/3a8d3c30-3fb3-46a3-a7a0-cc4b466d018a"
+                href="#"
                 data-readdy="true"
                 className="back-button"
               >

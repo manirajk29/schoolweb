@@ -1,0 +1,60 @@
+/* RegistrationPage.css */
+
+.registration-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .registration-sidebar {
+    width: 40%;
+    background-color: #1e293b;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  .sidebar-content {
+    text-align: center;
+  }
+  
+  .logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  
+  .logo-background {
+    background-color: white;
+    padding: 16px;
+    border-radius: 50%;
+  }
+  
+  .icon-primary {
+    color: #3b82f6; /* primary blue */
+  }
+  
+  .registration-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .registration-subtitle {
+    font-size: 16px;
+    color: #cbd5e1;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  
+  .registration-main {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f9fafb;
+  }
+  

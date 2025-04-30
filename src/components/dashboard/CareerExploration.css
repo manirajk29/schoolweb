@@ -1,0 +1,74 @@
+/* Container for the whole section */
+.career-exploration-section {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+
+/* Section heading */
+.career-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* Grid for career cards */
+.career-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+/* Career card base styles */
+.career-card {
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.career-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon style */
+.career-card .icon-white {
+  color: #fff;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+/* Title of the card */
+.career-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+/* Description of the card */
+.career-card-description {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Icon background color variants */
+.bg-blue { background-color: #3b82f6; }
+.bg-purple { background-color: #8b5cf6; }
+.bg-orange { background-color: #f97316; }
+.bg-gray { background-color: #6b7280; }
+.bg-green { background-color: #10b981; }
+.bg-red { background-color: #ef4444; }
+.bg-yellow { background-color: #facc15; }
+.bg-darkblue { background-color: #1e40af; }

@@ -1,24 +1,29 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Carrierguide from "./Carrierguide";
-import Home from "./Home.jsx";
-import Pdfpage from "./Pdfpage.jsx";
-import PdfLibrary from "./PdfLibrary.jsx";
-import ContinueLearning from "./ContinueLearning.jsx";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
+import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
+import PdfPage from './PdfPage';
+import CareerGuide from './Carrierguide';
+import PdfLibrary from './Pdflibrary';
+import ContinueLearning from './ContinueLearning';
 
-function App() {
+const App = () => {
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Pdfpage" element={<Pdfpage />} />
-        <Route path="/Carrierguide" element={<Carrierguide />} />
-        <Route path="/Pdflibrary" element={<PdfLibrary />} />
-        <Route path="/ContinueLearning" element={<ContinueLearning />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/dashboard" element={isLoggedIn ? <DashboardPage /> : <Navigate to="/DashboardPage" />} />
+        <Route path="/Pdfpage" element={isLoggedIn ? <PdfPage /> : <Navigate to="/PdfPage" />} />
+        <Route path="/Carrierguide" element={isLoggedIn ? <CareerGuide /> : <Navigate to="/Carrierguide" />} />
+        <Route path="/Pdflibrary" element={isLoggedIn ? <PdfLibrary /> : <Navigate to="/Pdflibrary" />} />
+        <Route path="/ContinueLearning" element={isLoggedIn ? <ContinueLearning /> : <Navigate to="/ContinueLearning" />} />
+        <Route path="*" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;

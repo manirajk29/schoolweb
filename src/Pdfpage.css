@@ -12,16 +12,21 @@ body {
   max-width: 100%;
   margin: 0 auto;
   padding: 1rem;
-  background-color: #000;
+  background-color: #f6fafc;
 }
 
-.header {
+.header-pdfpage {
   text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
   font-size: 2rem;
   font-weight: bold;
-  color: #9f7aea;
+  color: #f0f0f6;
   margin-bottom: 1rem;
-  background-color: #000;
+  background-color: #201e1e;
+  width: 100%;
+  height: 6rem;
 }
 
 .upload-form {
@@ -31,7 +36,7 @@ body {
 }
 
 .upload-form input[type="file"] {
-  background-color: #1e1e1e;
+  background-color: #1c1c1c;
   border: 1px solid #444;
   padding: 0.5rem;
   color: white;
@@ -41,7 +46,7 @@ body {
 .chat-box {
   flex: 1;
   overflow-y: auto;
-  background-color: #1a1a1a;
+  background-color: #1e1e1b;
   padding: 1rem;
   border-radius: 10px;
   display: flex;
@@ -96,7 +101,7 @@ textarea {
 }
 
 button {
-  background-color: #9f7aea;
+  background-color: #6441ac;
   color: white;
   padding: 0.75rem 1.25rem;
   border: none;
