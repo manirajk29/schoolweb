@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import Pdfpage from './Pdfpage';
 import CareerGuide from './Carrierguide';
-import PdfLibrary from './Pdflibrary';
+import PdfLibrary from './PdfLibrary';
 import ContinueLearning from './ContinueLearning';
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/dashboard" element={isLoggedIn ? <DashboardPage /> : <Navigate to="/DashboardPage" />} />
         <Route path="/Pdfpage" element={isLoggedIn ? <Pdfpage /> : <Navigate to="/Pdfpage" />} />
         <Route path="/Carrierguide" element={isLoggedIn ? <CareerGuide /> : <Navigate to="/Carrierguide" />} />
-        <Route path="/Pdflibrary" element={isLoggedIn ? <PdfLibrary /> : <Navigate to="/Pdflibrary" />} />
+        <Route path="/Pdflibrary" element={isLoggedIn ? <PdfLibrary /> : <Navigate to="/PdfLibrary" />} />
         <Route path="/ContinueLearning" element={isLoggedIn ? <ContinueLearning /> : <Navigate to="/ContinueLearning" />} />
         <Route path="*" element={<Navigate to={isLoggedIn ? "/dashboard" : "/login"} />} />
       </Routes>
